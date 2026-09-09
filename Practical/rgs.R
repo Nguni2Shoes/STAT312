@@ -7,7 +7,7 @@ usethis::edit_r_environ()
 
 # A text file will open in RStudio. Paste the following line on a 
 # new line (replace with your actual key):
-GEMINI_API_KEY="AQ.Ab8RN6LV-GmLWSA6kDK6WqUFw-g_QPeC1imgdzYLaNUTYpmpJw"
+GEMINI_API_KEY="AQ.Ab8RN6I6EM0m368reRnmRN-_-H5DOyHXgA_RSOtpIdkY0zMLAw"
 
 # Save the file (Ctrl+S), then restart your R session 
 # (Ctrl+Shift+F10 on Windows).
