@@ -129,9 +129,20 @@ chat$chat(
   )
 )
 
+# 3. How to Avoid Running Out Without Switching Accounts
+# A. Switch to a Flash Model in R
+# If ellmer or chattr defaulted to a Pro model (which cuts you off after just 25–50 prompts), 
+# switch explicitly to a Flash model, which grants significantly more daily requests:
 
+library(ellmer)
 
+# Explicitly use 2.5 Flash instead of Pro
+chat <- chat_google_gemini(model = "gemini-2.5-flash")
 
+# B. Reset Long Conversations
+# If you keep a single chat session running for 20+ turns, chattr resends the entire conversation 
+# history on every prompt. This consumes your Tokens Per Minute (TPM) quota rapidly. 
+# Starting a fresh session (chat <- chat_google_gemini()) keeps prompt sizes small and preserves your quota.
 
 
 
