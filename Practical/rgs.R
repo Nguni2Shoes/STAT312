@@ -145,8 +145,19 @@ chat <- chat_google_gemini(model = "gemini-2.5-flash")
 # Starting a fresh session (chat <- chat_google_gemini()) keeps prompt sizes small and preserves your quota.
 
 
+# Keep answers brief
 
+library(ellmer)
 
+chat <- chat_google_gemini(
+  model = "gemini-2.5-flash",
+  system_prompt = paste(
+    "You are a strict statistics tutor.",
+    "Answer all statistical theory questions in at most 3 concise bullet points or under 60 words total.",
+    "Never provide introductory fluff, historical context, or conversational filler.",
+    "State the definition, the primary mathematical intuition or formula if needed, and the exact practical implication directly."
+  )
+)
 
 
 
