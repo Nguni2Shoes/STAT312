@@ -47,10 +47,23 @@ chat$chat(
   "Read this document and solve question 1."
 )
 
-chat$chat(
-  readLines("my_script.R"),
-  "Read this script and answer the theory questions inside."
+chat <- chat_google_gemini(model = "gemini-2.5-flash")
+
+# 1. Read and collapse the file into one string
+# (warn = FALSE silences the 'incomplete final line' warning)
+r_code <- paste(readLines("Practical 6.R", warn = FALSE), collapse = "\n")
+
+# 2. Combine the prompt and code into one prompt string
+prompt <- paste(
+  "Here is my R script:",
+  r_code,
+  "---",
+  "Read this script and answer Question 1.",
+  sep = "\n\n"
 )
+
+# 3. Send it
+chat$chat(prompt)
 
 # OR (Change to the right directory first)
 
