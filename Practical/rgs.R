@@ -47,6 +47,11 @@ chat$chat(
   "Read this document and solve question 1."
 )
 
+chat$chat(
+  readLines("my_script.R"),
+  "Read this script and answer the theory questions inside."
+)
+
 # OR (Change to the right directory first)
 
 chat$chat(
