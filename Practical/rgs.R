@@ -49,17 +49,23 @@ chat$chat(
 
 chat <- chat_google_gemini(model = "gemini-2.5-flash")
 
-# 1. Read and collapse the file into one string
-# (warn = FALSE silences the 'incomplete final line' warning)
-r_code <- paste(readLines("Practical 6.R", warn = FALSE), collapse = "\n")
+library(ellmer)
 
-# 2. Combine the prompt and code into one prompt string
-prompt <- paste(
-  "Here is my R script:",
-  r_code,
-  "---",
-  "Read this script and answer Question 1.",
-  sep = "\n\n"
+# 1. Start a fresh chat object (clears the poisoned history)
+chat <- chat_google_gemini()
+
+# 2. Read the script file cleanly as raw text
+script_text <- readr::read_file("Practical 6.R")
+
+# 3. Send using an explicit character string
+chat$chat(
+  paste(
+    "Please read the following R script and answer Question 1:",
+    "```r",
+    script_text,
+    "```",
+    sep = "\n"
+  )
 )
 
 # 3. Send it
