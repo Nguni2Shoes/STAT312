@@ -185,6 +185,26 @@ chat <- chat_google_gemini(
 
 
 
+# This worked (after getting problems)
+library(ellmer)
+
+# 1. Start a fresh session with an active Flash-Lite model
+chat <- chat_google_gemini(model = "gemini-3.5-flash-lite")
+
+# 2. Read your file directly into a clean string
+script_text <- readr::read_file("Test_3_Question_1.R")
+
+# 3. Send prompt
+chat$chat(
+  paste(
+    "Please read the following R script and answer Question 1:",
+    "```r",
+    script_text,
+    "```",
+    sep = "\n"
+  )
+)
+
 
 
 
