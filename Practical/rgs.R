@@ -205,6 +205,38 @@ chat$chat(
   )
 )
 
+# When CSV file is required
+library(ellmer)
+
+# 1. Initialize your session with the working model
+chat <- chat_google_gemini(model = "gemini-3.5-flash-lite")
+
+# 2. Read your data file into memory
+df <- read.csv("my_data.csv")
+
+# 3. Capture the structure of the data as a clean text string
+data_schema <- paste(capture.output(str(df)), collapse = "\n")
+
+# Read your starter script
+script_text <- readr::read_file("Test_3_Question_2.R")
+
+chat$chat(
+  paste(
+    "Here is the dataset structure (`df`):",
+    "```text",
+    data_schema,
+    "```",
+    "",
+    "Here is my practical script containing the starter code and questions:",
+    "```r",
+    script_text,
+    "```",
+    "",
+    "Instructions: Read the script and complete the starter code for Question 1 using the variables in `df`. Keep explanations brief.",
+    sep = "\n"
+  )
+)
+
 
 
 
