@@ -9,13 +9,13 @@ usethis::edit_r_environ()
 # new line (replace with your actual key):
 GEMINI_API_KEY=""
 
-part_1 <- "AQ.Ab8RN6LvD7"
+part_1 <- "AQ.Ab8RN6ICzkYSmGkPXPQnI81Q"
 
-part_2 <- "rwTw6jvNDiTv0"
+part_2 <- "y7w4_2LObVK23VOQEOUVv03vtA"
 
-part_3 <- "LjXMyo6KO6IrR1"
+part_3 <- ""
 
-part_4 <- "rtJw2QoQ2gprA"
+part_4 <- ""
 
 # Save the file (Ctrl+S), then restart your R session 
 # (Ctrl+Shift+F10 on Windows).
