@@ -277,6 +277,32 @@ chat$chat("List the 4 assumptions of linear regression in single-word or short-p
 chat$chat("When to use Mann-Whitney U vs paired t-test? Answer in 2 bullet points, under 30 words.")
 
 
+# If limit reached (switch model)
+library(ellmer)
+
+# Switch to 3.6 Flash when 3.5-flash-lite reaches its limit
+chat <- chat_google_gemini(model = "gemini-3.6-flash")
+
+# Continue your workflow normally
+# If gemini-3.5-flash-lite hits its daily quota, try these active endpoints in your chat initialization:
+# gemini-3.6-flash (High capacity, fast general workhorse)
+# gemini-3.8-flash (Flagship flash model, though occasionally busy during peak hours)
+
+script_text <- readr::read_file("Test_3_Question_1.R")
+chat$chat(paste("Read this script and complete Question 1:", script_text, sep = "\n"))
+
+# Option B
+# Switch the active chat session's model on the fly
+chat$set_model("gemini-3.6-flash")
+
+# Option C
+library(chattr)
+
+# Point chattr to the alternate model
+chattr_use(ellmer::chat_google_gemini(model = "gemini-3.6-flash"))
+chattr_app()
+
+
 
 
 
