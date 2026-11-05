@@ -205,6 +205,8 @@ chat$chat(
   )
 )
 
+
+
 # When CSV file is required
 library(ellmer)
 
@@ -236,6 +238,45 @@ chat$chat(
     sep = "\n"
   )
 )
+
+
+# For Theory Questions
+library(ellmer)
+
+# 1. Initialize the session with strict brevity rules
+chat <- chat_google_gemini(
+  model = "gemini-3.5-flash-lite",
+  system_prompt = "You are a strict statistics tutor. Answer theory questions using maximum 3 bullet points per question. Keep total response under 50 words. No intro, no outro, direct facts only."
+)
+
+# 2. Read the script file
+script_text <- readr::read_file("Test_3_Question_1.R")
+
+# 3. Prompt Gemini
+chat$chat(
+  paste(
+    "Read the theory questions in this script and provide short, direct answers:",
+    "```r",
+    script_text,
+    "```",
+    sep = "\n"
+  )
+)
+
+# OR
+
+chat$chat("Explain [CONCEPT HERE] in 2 short bullet points max for a test answer.")
+
+# OR
+
+# For Definitions
+chat$chat("Define Type I error and p-value. Max 1 sentence per concept.")
+# For Test Assumptions:
+chat$chat("List the 4 assumptions of linear regression in single-word or short-phrase bullet points.")
+# For Model Choice Questions:
+chat$chat("When to use Mann-Whitney U vs paired t-test? Answer in 2 bullet points, under 30 words.")
+
+
 
 
 
